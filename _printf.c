@@ -1,16 +1,7 @@
 #include "main.h"
-#include <stdio.h>
 
-/**
- * print_buffer - function created for the project
- * @buffer: parameter size
- * @*buff_ind: parameter pointer size
- * _printf - function that produce output according to format
- * @*format: parameter pointer character string
- * Return: printed_char or -1
- */
+void print_buffer(char buffer[], int *buff_ind);
 
-void print_buffer(char buffer[], int *buff_ind)
 int _printf(const char *format, ...)
 {
 	int i, printed = 0, printed_chars = 0;
@@ -46,7 +37,9 @@ int _printf(const char *format, ...)
 		}
 	}
 	print_buffer(buffer, &buff_ind);
+
 	va_end(list);
+
 	return (printed_chars);
 }
 
