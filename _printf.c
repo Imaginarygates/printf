@@ -2,6 +2,11 @@
 
 void print_buffer(char buffer[], int *buff_ind);
 
+/**
+ * _printf - function that produces output according to a format
+ * @format: parameter format
+ * Return: printed chars
+ */
 int _printf(const char *format, ...)
 {
 	int i, printed = 0, printed_chars = 0;
@@ -30,19 +35,23 @@ int _printf(const char *format, ...)
 			precision = get_precision(format, &i, list);
 			size = get_size(format, &i);
 			++i;
-			printed = handle_print(format, &i, list, buffer, flags, width, precision, size);
+			printed = handle_print(format, &i, list, buffer, flags, width,
+					precision, size);
 			if (printed == -1)
 				return (-1);
 			printed_chars += printed;
 		}
 	}
 	print_buffer(buffer, &buff_ind);
-
 	va_end(list);
-
 	return (printed_chars);
 }
 
+/**
+ * print_buffer - function that print the contents of the buffer
+ * @buffer: parameter array of chars
+ * @buff_ind: parameter index
+ */
 void print_buffer(char buffer[], int *buff_ind)
 {
 	if (*buff_ind > 0)
